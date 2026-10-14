@@ -107,3 +107,30 @@ body.in-game{height:100dvh;overflow:hidden}
  .in-game .action-panel:not([data-phase="roll"]):not([data-phase="extra"]) .yut-visual{display:none}
  .in-game .actions{padding-bottom:calc(4px + env(safe-area-inset-bottom,0px))}
 }
+
+#sound-dialog{width:min(420px,calc(100vw - 24px))}
+.audio-option{display:flex;align-items:center;gap:10px;margin:18px 0 10px;font-weight:700}
+.audio-option input{width:20px;height:20px;accent-color:var(--teal)}
+.audio-slider{display:flex;justify-content:space-between;font-size:12px;margin-top:10px}
+#sound-dialog input[type="range"]{width:100%;min-height:36px;accent-color:var(--teal)}
+#sound-dialog h2{font-size:24px}#sound-dialog p{font-size:11px}
+@media(max-width:700px){.in-game .top-actions{gap:4px}.in-game .topbar .brand{gap:5px;font-size:15px}.in-game .topbar .quiet{padding:4px 6px;font-size:11px}}
+
+/* Clear branch arrows and live gross-asset ranks. */
+.route-markers{position:absolute;inset:0;z-index:20;pointer-events:none}
+.route-marker{position:absolute;transform:translate(-50%,-50%);width:clamp(32px,6cqw,48px);height:clamp(32px,6cqw,48px);border-radius:50%;background:#ffd35b;border:3px solid #fff;box-shadow:0 0 0 3px #af781c,0 4px 12px #57380c66;pointer-events:auto;padding:4px;animation:route-glow 1s infinite alternate}
+.route-marker:hover:not(:disabled){transform:translate(-50%,-50%) scale(1.08)}
+.route-marker svg{width:100%;height:100%;transform:rotate(var(--arrow-angle));overflow:visible}
+.route-marker path{fill:none;stroke:#563400;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.route-marker small{position:absolute;left:50%;top:100%;transform:translateX(-50%);background:#fff9de;color:#573400;border:1px solid #bd8a25;padding:2px 5px;border-radius:5px;font-size:11px;font-weight:800;white-space:nowrap;pointer-events:none}
+@keyframes route-glow{to{box-shadow:0 0 0 5px #ffd35b88,0 4px 12px #57380c66}}
+.token-rank{position:absolute;left:-30%;top:20%;background:#fff4ca;color:#5e400a;border:1px solid #d6ad48;border-radius:8px;padding:1px 4px;font-size:clamp(9px,1.8cqw,13px);font-weight:900;white-space:nowrap;box-shadow:0 2px 3px #173b4333;z-index:6}
+.players .player .money{font-size:19px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.players .player img.coin-icon{position:static;opacity:1;width:21px;height:21px;flex-shrink:0}
+.rules-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.rule-card{background:#eef6f1;border:1px solid #d4e5dc;border-radius:10px;padding:12px}.rule-card b{display:block}.rule-card>span{font-size:11px;color:var(--muted)}.rule-card p{margin:5px 0;font-size:12px;line-height:1.6}
+@media(max-width:700px){.players .player .money{font-size:14px;gap:2px}.players .player img.coin-icon{width:14px;height:14px}.route-marker{width:30px;height:30px;padding:3px;border-width:2px}.route-marker small{font-size:10px}.rules-cards{grid-template-columns:1fr}.token-rank{font-size:9px;padding:1px 3px}}
+@media(max-height:550px) and (orientation:landscape){.players .player .money{font-size:15px}.players .player img.coin-icon{width:15px;height:15px}}
+
+.players .player .name{display:flex;align-items:center;gap:5px}.player-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-rank{flex-shrink:0;font-size:11px;color:#785219;background:#fff0bd;border-radius:6px;padding:1px 4px}
+@media(max-width:700px){.player-rank{font-size:9px;padding:0 2px}.players .player .name{gap:2px}.in-game .power-readout{font-size:8px;gap:2px}.in-game .power-readout>span{max-width:43%}}

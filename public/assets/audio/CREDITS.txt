@@ -1,0 +1,22 @@
+# Audio sources
+
+Effects: Kenney, Creative Commons Zero (CC0). Converted from OGG to PCM WAV and peak-normalized for browser compatibility.
+
+https://kenney.nl/assets/interface-sounds
+https://kenney.nl/assets/impact-sounds
+https://kenney.nl/assets/music-jingles
+
+Original filenames:
+- click.wav: interface/Audio/click_001.ogg
+- select.wav: interface/Audio/select_001.ogg
+- event.wav: interface/Audio/open_001.ogg
+- success.wav: interface/Audio/confirmation_001.ogg
+- sad.wav: interface/Audio/error_003.ogg
+- step.wav: impact/Audio/footstep_wood_001.ogg
+- throw.wav: impact/Audio/impactWood_medium_001.ogg
+- build.wav: impact/Audio/impactWood_light_002.ogg
+- victory.wav: jingles/Audio/Pizzicato jingles/jingles_PIZZI00.ogg
+- defeat.wav: jingles/Audio/Pizzicato jingles/jingles_PIZZI10.ogg
+
+goeul-breeze.wav: original AI-composed, programmatically synthesized instrumental. No source samples or existing melodies. D major pentatonic, 104 BPM, 24 bars, 55.38 seconds, seamless circular loop. Instrument timbres evoke plucked strings, breathy flute, light hand drums; they are not recordings of traditional instruments. Regenerator: tools/compose-bgm.py.
+The project owner may use, edit and distribute the original composition with this game. External generative music services were not used.

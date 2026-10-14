@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node dev.cjs",
     "build": "node build.cjs",
-    "test": "node validate.cjs"
+    "test": "node validate.cjs && node audio.test.cjs"
   },
   "engines": {
     "node": "22.x"
