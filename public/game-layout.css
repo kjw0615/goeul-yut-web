@@ -124,12 +124,12 @@ body.in-game{height:100dvh;overflow:hidden}
 .route-marker path{fill:none;stroke:#563400;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
 .route-marker small{position:absolute;left:50%;top:100%;transform:translateX(-50%);background:#fff9de;color:#573400;border:1px solid #bd8a25;padding:2px 5px;border-radius:5px;font-size:11px;font-weight:800;white-space:nowrap;pointer-events:none}
 @keyframes route-glow{to{box-shadow:0 0 0 5px #ffd35b88,0 4px 12px #57380c66}}
-.token-rank{position:absolute;left:-30%;top:20%;background:#fff4ca;color:#5e400a;border:1px solid #d6ad48;border-radius:8px;padding:1px 4px;font-size:clamp(9px,1.8cqw,13px);font-weight:900;white-space:nowrap;box-shadow:0 2px 3px #173b4333;z-index:6}
+
 .players .player .money{font-size:19px;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .players .player img.coin-icon{position:static;opacity:1;width:21px;height:21px;flex-shrink:0}
 .rules-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
 .rule-card{background:#eef6f1;border:1px solid #d4e5dc;border-radius:10px;padding:12px}.rule-card b{display:block}.rule-card>span{font-size:11px;color:var(--muted)}.rule-card p{margin:5px 0;font-size:12px;line-height:1.6}
-@media(max-width:700px){.players .player .money{font-size:14px;gap:2px}.players .player img.coin-icon{width:14px;height:14px}.route-marker{width:30px;height:30px;padding:3px;border-width:2px}.route-marker small{font-size:10px}.rules-cards{grid-template-columns:1fr}.token-rank{font-size:9px;padding:1px 3px}}
+@media(max-width:700px){.players .player .money{font-size:14px;gap:2px}.players .player img.coin-icon{width:14px;height:14px}.route-marker{width:30px;height:30px;padding:3px;border-width:2px}.route-marker small{font-size:10px}.rules-cards{grid-template-columns:1fr}}
 @media(max-height:550px) and (orientation:landscape){.players .player .money{font-size:15px}.players .player img.coin-icon{width:15px;height:15px}}
 
 .players .player .name{display:flex;align-items:center;gap:5px}.player-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-rank{flex-shrink:0;font-size:11px;color:#785219;background:#fff0bd;border-radius:6px;padding:1px 4px}
@@ -169,3 +169,5 @@ body.in-game{height:100dvh;overflow:hidden}
 /* Room browser: two visible rows, with extra rooms scrolling inside the list. */
 .lobby-columns>section{min-width:0}.room-list{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:188px;align-content:start;height:396px;overflow-y:auto;overflow-x:hidden;padding:4px;overscroll-behavior:contain;scrollbar-gutter:stable;border-radius:16px}.room-card{flex-direction:column;align-items:stretch;justify-content:space-between;padding:16px;gap:12px;min-width:0;box-shadow:0 3px 8px #244b4d0c}.room-card>div{min-width:0}.room-card h3{font-size:18px;line-height:1.4;margin:8px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.room-card small{font-size:11px}.room-card>button{width:100%;min-height:44px;flex-shrink:0}.room-list .empty-room{grid-column:1/-1;grid-row:span 2;display:flex;flex-direction:column;justify-content:center;padding:20px}
 @media(max-width:750px){.room-list{grid-template-columns:1fr;grid-auto-rows:156px;height:332px}.room-card{padding:14px;gap:8px}.room-card h3{font-size:18px;margin:6px 0}.room-list .empty-room{grid-row:span 2}}
+
+.in-game .token{width:6.9cqw;height:9cqw}.in-game .tokens:has(.token:nth-child(3)) .token{width:5.7cqw;height:7.3cqw}.in-game .moving-token{width:9.3cqw;height:12.1cqw}
