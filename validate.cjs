@@ -1,6 +1,6 @@
 const fs=require('node:fs'),{execFileSync}=require('node:child_process');process.chdir(__dirname);
 for(const file of ['public/engine.js','public/app.js','public/lobby.js','public/config.js','build.cjs','dev.cjs','load-env.cjs'])execFileSync(process.execPath,['--check',file],{stdio:'inherit'});
 const {FILES,NODES}=require('./public/engine.js');
-for(const f of ['public/index.html','public/style.css','public/game-layout.css','READMD.md',...FILES.map(x=>'public/assets/characters/'+x+'.png'),...['red','blue'].flatMap(c=>[1,2,3].map(n=>'public/assets/buildings/'+c+'-'+n+'.png')),...['yut-set','stick-rounded','stick-flat','stick-flat-marked'].map(n=>'public/assets/yut/'+n+'.png')])if(!fs.existsSync(f))throw Error('필수 파일 없음: '+f);
+for(const f of ['public/index.html','public/favicon.svg','public/style.css','public/game-layout.css','READMD.md',...FILES.map(x=>'public/assets/characters/'+x+'.png'),...['red','blue'].flatMap(c=>[1,2,3].map(n=>'public/assets/buildings/'+c+'-'+n+'.png')),...['yut-set','stick-rounded','stick-flat','stick-flat-marked'].map(n=>'public/assets/yut/'+n+'.png')])if(!fs.existsSync(f))throw Error('필수 파일 없음: '+f);
 if(NODES.length!==29)throw Error('보드 구성 불일치');if(fs.readdirSync('public').some(p=>p.startsWith('__qa')))throw Error('임시 QA 파일을 제외하세요.');
 console.log('화면 소스·보드·이미지 검증 완료');

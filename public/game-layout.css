@@ -70,3 +70,18 @@ body.in-game{height:100dvh;overflow:hidden}
  .in-game .action-panel>.yut-art{display:none}.in-game .action-panel{padding:7px}.action-heading{flex-direction:row;justify-content:space-between}.action-heading>b{font-size:12px}.in-game .board-footer{flex-basis:18px}
  .in-game .node .nvalue{display:none}.in-game .node .nname{font-size:clamp(9px,2.4cqw,14px);white-space:normal;max-width:98%;line-height:1.1}.in-game .actions p{font-size:11px}.in-game .rolls{display:none}
 }
+
+/* Stable geometry across board selection and yut animations. */
+.in-game .selection-slot{height:38px;flex:0 0 38px;overflow:hidden}
+.in-game .selection-banner{height:36px;box-sizing:border-box;padding:3px 10px;margin:0;overflow:hidden}
+.in-game .selection-banner b,.in-game .selection-banner small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.in-game .yut-visual{height:100px;flex:0 0 100px;margin:5px 0;position:relative}
+.in-game .yut-visual .yut-art,.in-game .yut-visual .throw-stage{display:block;width:100%;height:100%;margin:0;object-fit:contain}
+.in-game .yut-visual .throw-stick{height:85%;width:22%}
+.in-game .rolls{height:28px;min-height:28px;overflow:hidden}.in-game .rolls:empty{display:flex}
+.node.just-built .building{animation:none!important}
+.leave-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.topbar{position:relative;z-index:125}
+@media(max-width:700px) and (orientation:portrait){.in-game .selection-slot{height:24px;flex-basis:24px}.in-game .selection-banner{height:24px}.in-game .yut-visual{height:54px;flex-basis:54px;margin:2px 0}.in-game .rolls,.in-game .rolls:empty{display:none}}
+@media(max-height:550px) and (orientation:landscape){.in-game .selection-slot{height:24px;flex-basis:24px}.in-game .selection-banner{height:24px}.in-game .selection-banner small{display:none}.in-game .yut-visual{height:54px;flex-basis:54px;margin:2px 0}}
+@media(max-height:550px) and (orientation:landscape){.in-game .topbar{display:flex;height:32px}.in-game main{height:calc(100dvh - 32px)}.in-game .topbar .quiet{min-height:26px;padding:3px 8px}.in-game .seal{width:24px;height:24px;font-size:18px}.in-game .rolls,.in-game .rolls:empty{display:none}}
