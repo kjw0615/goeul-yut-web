@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const files=['charge','click','select','event','success','sad','step','throw','build','victory','defeat','goeul-breeze'];
+const files=['inspector-call','charge','click','select','event','success','sad','step','throw','build','victory','defeat','goeul-breeze'];
 let options={master:true,masterVolume:1,effects:true,music:true,effectVolume:.5,musicVolume:.22};
 try{const saved=JSON.parse(localStorage.getItem('goeul-audio')||'null');if(saved)for(const key of Object.keys(options)){if(typeof options[key]==='boolean'&&typeof saved[key]==='boolean')options[key]=saved[key];else if(typeof options[key]==='number'&&Number.isFinite(saved[key]))options[key]=Math.max(0,Math.min(1,saved[key]));}}catch{}
 const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new Map(),lastPlayed:new Map(),musicSource:null,musicGain:null,lastState:null,roomId:null,unlocked:false,failed:false,
