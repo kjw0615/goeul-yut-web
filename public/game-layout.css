@@ -134,3 +134,9 @@ body.in-game{height:100dvh;overflow:hidden}
 
 .players .player .name{display:flex;align-items:center;gap:5px}.player-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-rank{flex-shrink:0;font-size:11px;color:#785219;background:#fff0bd;border-radius:6px;padding:1px 4px}
 @media(max-width:700px){.player-rank{font-size:9px;padding:0 2px}.players .player .name{gap:2px}.in-game .power-readout{font-size:8px;gap:2px}.in-game .power-readout>span{max-width:43%}}
+
+.autoplay-toggle{display:flex;align-items:center;gap:6px;padding:4px 8px;background:#edf3f0;color:#345954;border-radius:8px;font-size:11px;min-height:30px;flex-shrink:0}
+.autoplay-toggle.enabled{background:#fff0c8;color:#765115}
+.autoplay-track{width:28px;height:16px;background:#aec3be;border-radius:10px;padding:2px;flex-shrink:0}.autoplay-track i{display:block;width:12px;height:12px;background:white;border-radius:50%;transition:transform .15s}.enabled .autoplay-track{background:#d7a239}.enabled .autoplay-track i{transform:translateX(12px)}
+.autoplay-reason{font-size:10px;color:#96691b;white-space:nowrap}
+@media(max-width:700px){.autoplay-toggle{font-size:9px;padding:3px 4px;gap:3px}.game-topline .game-room{display:none}.autoplay-reason{display:none}.game-topline .turn-clock b{font-size:11px}}
