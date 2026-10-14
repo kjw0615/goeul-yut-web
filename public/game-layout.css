@@ -140,3 +140,13 @@ body.in-game{height:100dvh;overflow:hidden}
 .autoplay-track{width:28px;height:16px;background:#aec3be;border-radius:10px;padding:2px;flex-shrink:0}.autoplay-track i{display:block;width:12px;height:12px;background:white;border-radius:50%;transition:transform .15s}.enabled .autoplay-track{background:#d7a239}.enabled .autoplay-track i{transform:translateX(12px)}
 .autoplay-reason{font-size:10px;color:#96691b;white-space:nowrap}
 @media(max-width:700px){.autoplay-toggle{font-size:9px;padding:3px 4px;gap:3px}.game-topline .game-room{display:none}.autoplay-reason{display:none}.game-topline .turn-clock b{font-size:11px}}
+
+.autoplay-bar{display:flex;align-items:center;justify-content:space-between;gap:5px;flex-shrink:0;border-bottom:1px solid var(--line);padding-bottom:7px;margin-bottom:7px}
+.autoplay-bar .autoplay-toggle{min-height:32px}.autoplay-bar .autoplay-reason{display:block}
+.actions button:has(.build-option-image){justify-content:flex-start;text-align:left;gap:9px;min-height:54px;padding:7px 12px}
+.build-option-image{object-fit:contain;flex-shrink:0;width:40px;height:36px}.build-option-image.tier1{width:32px;height:28px}.build-option-image.tier3{width:46px;height:40px}
+@media(max-width:700px) and (orientation:portrait){.in-game .game-layout{grid-template-rows:minmax(0,1fr) clamp(258px,42dvh,350px)}.autoplay-bar{padding-bottom:4px;margin-bottom:4px}.autoplay-bar .autoplay-toggle{font-size:11px;min-height:32px}.autoplay-bar .autoplay-reason{font-size:10px}.actions button:has(.build-option-image){padding:5px 9px;min-height:48px;font-size:12px}.build-option-image{width:32px;height:28px}.build-option-image.tier1{width:26px;height:23px}.build-option-image.tier3{width:38px;height:32px}}
+
+.notice-auto-close{display:block;text-align:center;font-size:11px;color:var(--muted);margin-top:6px}
+
+.leave-session{background:#b94350;color:white;font-size:14px;min-height:44px;padding:12px 20px;border:2px solid #a2303d;box-shadow:0 4px 10px #b943502b;flex-shrink:0}.leave-session svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.leave-session:hover:not(:disabled){background:#a73340}

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const files=['click','select','event','success','sad','step','throw','build','victory','defeat','goeul-breeze'];
+const files=['charge','click','select','event','success','sad','step','throw','build','victory','defeat','goeul-breeze'];
 let options={master:true,masterVolume:1,effects:true,music:true,effectVolume:.5,musicVolume:.22};
 try{const saved=JSON.parse(localStorage.getItem('goeul-audio')||'null');if(saved)for(const key of Object.keys(options)){if(typeof options[key]==='boolean'&&typeof saved[key]==='boolean')options[key]=saved[key];else if(typeof options[key]==='number'&&Number.isFinite(saved[key]))options[key]=Math.max(0,Math.min(1,saved[key]));}}catch{}
 const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new Map(),lastPlayed:new Map(),musicSource:null,musicGain:null,lastState:null,roomId:null,unlocked:false,failed:false,
@@ -30,6 +30,9 @@ const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new 
    if(['victory','defeat','sad'].includes(name)){const time=this.context.currentTime;this.musicGain.gain.cancelScheduledValues(time);this.musicGain.gain.setTargetAtTime(options.musicVolume*.25,time,.05);this.musicGain.gain.setTargetAtTime(options.musicVolume,time+buffer.duration,.2);}
   }catch{}
  },
+ async startCharge(){this.stopCharge();const serial=this.chargeSerial;this.charging=true;this.chargePower=0;if(!await this.unlock()||serial!==this.chargeSerial||!options.master||!options.effects||document.hidden)return;try{const buffer=await this.load('charge');if(serial!==this.chargeSerial||!this.charging||!options.master||!options.effects||document.hidden)return;const source=this.context.createBufferSource(),gain=this.context.createGain();source.buffer=buffer;source.loop=true;source.playbackRate.value=.8+this.chargePower*.012;gain.gain.value=options.effectVolume*(.12+this.chargePower*.0018);source.connect(gain);gain.connect(this.masterGain);source.onended=()=>{source.disconnect();gain.disconnect();};this.chargeSource=source;this.chargeGain=gain;source.start();}catch{}},
+ updateCharge(power){this.chargePower=Math.max(0,Math.min(100,Number(power)||0));if(this.chargeSource){this.chargeSource.playbackRate.setTargetAtTime(.8+this.chargePower*.012,this.context.currentTime,.04);this.chargeGain.gain.setTargetAtTime(options.effectVolume*(.12+this.chargePower*.0018),this.context.currentTime,.04);}},
+ stopCharge(){this.chargeSerial=(this.chargeSerial||0)+1;this.charging=false;const source=this.chargeSource;this.chargeSource=null;this.chargeGain=null;if(source){try{source.stop();}catch{}}},
  async startMusic(){
   if(!options.music||!this.unlocked||this.musicSource||this.startingMusic)return;
   this.startingMusic=true;
@@ -37,7 +40,7 @@ const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new 
    const source=this.context.createBufferSource();source.buffer=buffer;source.loop=true;source.connect(this.musicGain);this.musicGain.gain.value=options.musicVolume;this.musicSource=source;source.start();sync();
   }catch{}finally{this.startingMusic=false;}
  },
- save(){if(this.masterGain){this.masterGain.gain.cancelScheduledValues(this.context.currentTime);this.masterGain.gain.setTargetAtTime(options.master?options.masterVolume:0,this.context.currentTime,.04);}try{localStorage.setItem('goeul-audio',JSON.stringify(options));}catch{}
+ save(){if(!options.master||!options.effects)this.stopCharge();if(this.masterGain){this.masterGain.gain.cancelScheduledValues(this.context.currentTime);this.masterGain.gain.setTargetAtTime(options.master?options.masterVolume:0,this.context.currentTime,.04);}try{localStorage.setItem('goeul-audio',JSON.stringify(options));}catch{}
   if(this.musicGain){this.musicGain.gain.cancelScheduledValues(this.context.currentTime);this.musicGain.gain.setTargetAtTime(options.musicVolume,this.context.currentTime,.08);}
   if(!options.music&&this.musicSource){this.musicSource.stop();this.musicSource.disconnect();this.musicSource=null;}else this.startMusic();
  },
@@ -60,7 +63,7 @@ const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new 
 document.addEventListener('pointerdown',()=>sound.unlock(),{capture:true});
 document.addEventListener('keydown',e=>{if(['Enter',' ','Tab'].includes(e.key))sound.unlock();},{capture:true});
 document.addEventListener('click',e=>{const button=e.target.closest('button');if(button&&!button.disabled&&!button.hasAttribute('data-charge')&&button.id!=='sound-test')sound.play('click',.45);},{capture:true});
-document.addEventListener('visibilitychange',()=>{if(!sound.context)return;if(document.hidden)sound.context.suspend().catch(()=>{});else if(sound.unlocked)sound.context.resume().catch(()=>{});});
+document.addEventListener('visibilitychange',()=>{if(!sound.context)return;if(document.hidden){sound.stopCharge();sound.context.suspend().catch(()=>{});}else if(sound.unlocked)sound.context.resume().catch(()=>{});});
 const dialog=document.querySelector('#sound-dialog');
 function sync(){for(const key of ['master','effects','music'])document.querySelector('#audio-'+key).checked=options[key];for(const [id,key] of [['master-volume','masterVolume'],['effects-volume','effectVolume'],['music-volume','musicVolume']]){document.querySelector('#audio-'+id).value=Math.round(options[key]*100);document.querySelector('#audio-'+id+'-value').textContent=Math.round(options[key]*100)+'%';}document.querySelector('#audio-status').textContent=!options.master?'전체 소리가 음소거되어 있습니다.':sound.failed?'일부 소리를 불러오지 못했습니다. 연결 상태를 확인해주세요.':(sound.musicSource&&options.music?'배경음악 재생 중. 설정은 이 기기에 저장됩니다.':options.music?'첫 화면 조작 후 소리가 재생됩니다. 설정은 이 기기에 저장됩니다.':'배경음악이 꺼져 있습니다. 설정은 이 기기에 저장됩니다.');}
 document.querySelector('#sound-btn').onclick=()=>{sync();dialog.showModal();};

@@ -20,3 +20,4 @@ Original filenames:
 
 goeul-breeze.wav: original AI-composed, programmatically synthesized instrumental. No source samples or existing melodies. D major pentatonic, 104 BPM, 24 bars, 55.38 seconds, seamless circular loop. Instrument timbres evoke plucked strings, breathy flute, light hand drums; they are not recordings of traditional instruments. Regenerator: tools/compose-bgm.py.
 The project owner may use, edit and distribute the original composition with this game. External generative music services were not used.
+charge.wav: Kenney Interface Sounds / Audio/scroll_005.ogg; converted to PCM WAV and peak-normalized. Used as a low-volume looping charge sound with power-dependent playback rate. Same CC0 license as interface-LICENSE.txt.
