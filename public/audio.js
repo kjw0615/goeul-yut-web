@@ -48,6 +48,7 @@ const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new 
   if(!state){this.lastState=null;this.roomId=null;return;}
   const previous=this.lastState;this.lastState=JSON.parse(JSON.stringify(state));
   if(this.roomId!==roomId||!previous){this.roomId=roomId;return;}
+  if((state.nakSeq||0)>(previous.nakSeq||0))this.play('sad',.8);
   const me=state.players.find(p=>p.uid===window.NET?.data?.user.id),oldMe=previous.players.find(p=>p.id===me?.id);
   if(state.phase==='ended'&&previous.phase!=='ended'){this.play(!me||state.winner?.team===null||state.winner?.team===me?.team?'victory':'defeat');return;}
   if(me&&!oldMe?.out&&me.out){this.play('defeat');return;}
