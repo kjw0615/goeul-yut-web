@@ -1,0 +1,13 @@
+{
+  "name": "goeul-yut-web",
+  "version": "0.14.0",
+  "private": true,
+  "scripts": {
+    "dev": "node dev.cjs",
+    "build": "node build.cjs",
+    "test": "node validate.cjs"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
