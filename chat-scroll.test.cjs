@@ -1,0 +1,8 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+let frames=[],list={scrollTop:600,scrollHeight:900,clientHeight:300},rooms={scrollTop:70},focusCount=0,input={selectionStart:3,selectionEnd:3,value:'대화',focus(){focusCount++;},setSelectionRange(){}};
+const app={addEventListener(){}},document={activeElement:input,querySelector(selector){return selector==='#app'?app:selector==='[data-chat-input]'?input:selector==='.chat-messages'?list:selector==='.room-list'?rooms:null;}};
+const c={document,window:{addEventListener(){}},requestAnimationFrame:fn=>frames.push(fn)};vm.createContext(c);vm.runInContext(fs.readFileSync(__dirname+'/public/social.js','utf8')+';this.social=SOCIAL;',c);const social=c.social;social.scope='lobby:visit';
+// A server response and submit cleanup both redraw before the next animation frame.
+social.capture();list={scrollTop:0,scrollHeight:950,clientHeight:300};rooms={scrollTop:0};social.capture();list={scrollTop:0,scrollHeight:1000,clientHeight:300};assert.equal(frames.length,1);frames.shift()();assert.equal(list.scrollTop,1000);assert.equal(rooms.scrollTop,70);assert.equal(focusCount,1);console.log('PASS 전송 응답·입력 초기화 연속 갱신 후 채팅 하단 유지');
+list={scrollTop:180,scrollHeight:1000,clientHeight:300};social.capture();list={scrollTop:0,scrollHeight:1100,clientHeight:300};social.capture();frames.shift()();assert.equal(list.scrollTop,180);console.log('PASS 이전 대화 열람 중에는 기존 스크롤 위치 유지');
+social.capture();social.scope='room:new-visit';list={scrollTop:0,scrollHeight:300,clientHeight:300};frames.shift()();assert.equal(list.scrollTop,0);assert.equal(social.restoreQueued,false);console.log('PASS 채팅방 이동 시 이전 방 스크롤을 적용하지 않음');
