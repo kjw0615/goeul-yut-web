@@ -1,4 +1,7 @@
 /* Fit the waiting room to the viewport; only message history scrolls. */
+.room-card-rules{margin-top:6px;min-width:0}.room-rule-stats{display:flex;flex-wrap:wrap;gap:5px}.room-rule-stats span{background:#e2eee8;color:#315e51;border-radius:5px;padding:3px 6px;font-size:11px;font-weight:700;line-height:1.2}.room-card-rules p{font-size:11px;line-height:1.5;margin:5px 0 0;color:#516d63;overflow-wrap:anywhere}.room-card-rules p b{color:#264c40;margin-right:4px}.room-card-rules p span{white-space:nowrap}
+.in-lobby .lobby-columns{flex:2.7}.in-lobby .social-layout{flex:.7}.in-lobby .room-list{grid-auto-rows:minmax(174px,calc((100% - 20px)/2))}.in-lobby .room-card{gap:6px}
+@media(max-width:750px){.in-lobby .room-list{grid-auto-rows:172px}.in-lobby .lobby-columns,.in-lobby .social-layout{flex:1}}
 .room-form select{width:100%;min-height:38px;padding:7px 10px;border:1px solid #bfd9d0;border-radius:9px;background:white;color:var(--ink)}
 .victory-options{margin:0;border:1px solid #bfd9d0;border-radius:10px;padding:9px;display:grid;gap:7px;min-width:0}.victory-options legend{font-size:12px;font-weight:700}.room-form .victory-options label{display:flex;flex-direction:row;align-items:center;gap:7px;font-size:11px}.room-form .victory-options input{width:16px;min-height:16px;height:16px;margin:0;accent-color:var(--teal)}.victory-options small{font-size:10px;line-height:1.4;color:var(--muted)}
 .waiting-rules{display:block;font-size:11px;line-height:1.5;color:#526f65;overflow-wrap:anywhere}
