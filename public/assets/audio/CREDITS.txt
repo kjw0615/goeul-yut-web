@@ -22,4 +22,4 @@ goeul-breeze.wav: original AI-composed, programmatically synthesized instrumenta
 The project owner may use, edit and distribute the original composition with this game. External generative music services were not used.
 charge.wav: Kenney Interface Sounds / Audio/scroll_005.ogg; converted to PCM WAV and peak-normalized. Used as a low-volume looping charge sound with power-dependent playback rate. Same CC0 license as interface-LICENSE.txt.
 
-inspector-call.wav: Korean announcement synthesized locally using Windows Microsoft Heami Korean voice (SAPI), text: 암행어사 출두요! No external voice/person recording used.
+inspector-call.mp4: User-provided local media “암행어사 출두요.mp4”; only its audio is played in-game. Replaces the previous Windows synthesized announcement.

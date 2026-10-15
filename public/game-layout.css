@@ -198,3 +198,19 @@ body.in-game{height:100dvh;overflow:hidden}
 @keyframes inspector-ink{0%,45%{opacity:0;filter:blur(3px)}100%{opacity:1;filter:blur(0)}}
 @media(max-width:700px){.shared-special .shared-event-panel{padding:32px 28px;min-height:310px;width:min(470px,calc(100% - 24px));}.shared-special .shared-event-panel h2{font-size:25px}.shared-special .shared-event-description{font-size:14px;line-height:1.8}}
 @media(prefers-reduced-motion:reduce){.shared-inspector .shared-event-panel{animation:none;clip-path:none}.shared-inspector .shared-event-panel *{animation:none;opacity:1;filter:none}}
+
+/* Horizontal silk scroll: both upright rollers travel outward before the ink appears. */
+.shared-inspector .shared-event-panel{background:none;border:0;padding:0;min-height:0;box-shadow:none;animation:none;overflow:visible;width:min(540px,calc(100% - 36px));}
+.inspector-scroll-content{padding:22px 30px;background:#e6dec6;border-top:30px solid #10294c;border-bottom:30px solid #10294c;box-shadow:0 12px 38px #07132355,inset 0 0 25px #86764f24;clip-path:inset(0 48%);animation:inspector-open-sideways 1.7s cubic-bezier(.35,.05,.2,1) both;animation-delay:var(--scene-delay);}
+.shared-inspector .shared-event-panel:before,.shared-inspector .shared-event-panel:after{width:20px;height:calc(100% + 38px);top:-19px;bottom:auto;right:auto;border:0;border-radius:10px;background:linear-gradient(90deg,#102442,#386887 35%,#183454 70%,#071b37);box-shadow:2px 3px 6px #061b3555;animation:inspector-left-roller 1.7s cubic-bezier(.35,.05,.2,1) both;animation-delay:var(--scene-delay);}
+.shared-inspector .shared-event-panel:before{left:calc(50% - 20px);}
+.shared-inspector .shared-event-panel:after{left:auto;right:calc(50% - 20px);animation-name:inspector-right-roller;}
+.shared-inspector .shared-event-panel:before,.shared-inspector .shared-event-panel:after{border-top:12px solid #b49138;border-bottom:12px solid #b49138;}
+.shared-inspector .eyebrow,.shared-inspector h2,.shared-inspector .shared-event-description,.shared-inspector .special-stage{animation:inspector-ink-sideways 2s both;animation-delay:var(--scene-delay);}
+.shared-inspector .special-stage{margin:12px auto;width:90px;height:90px;}.shared-inspector .special-stage>span{border-color:#a44432;color:#a44432;background:#eee0ba;}
+@keyframes inspector-open-sideways{0%,12%{clip-path:inset(0 48%)}100%{clip-path:inset(0 0)}}
+@keyframes inspector-left-roller{0%,12%{left:calc(50% - 20px)}100%{left:-10px}}
+@keyframes inspector-right-roller{0%,12%{right:calc(50% - 20px)}100%{right:-10px}}
+@keyframes inspector-ink-sideways{0%,60%{opacity:0;filter:blur(2px)}100%{opacity:1;filter:none}}
+@media(max-width:700px){.shared-inspector .shared-event-panel{padding:0;min-height:0;width:calc(100% - 34px)}.inspector-scroll-content{padding:18px 22px;border-top-width:24px;border-bottom-width:24px}.shared-inspector .shared-event-panel h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.inspector-scroll-content{animation:none;clip-path:none}.shared-inspector .shared-event-panel:before{animation:none;left:-10px}.shared-inspector .shared-event-panel:after{animation:none;right:-10px}.shared-inspector .special-stage{animation:none}}

@@ -18,7 +18,7 @@ const sound={options,context:null,masterGain:null,buffers:new Map(),loading:new 
  async load(name){
   if(this.buffers.has(name))return this.buffers.get(name);
   if(this.loading.has(name))return this.loading.get(name);
-  const task=(async()=>{const response=await fetch('assets/audio/'+name+'.wav');if(!response.ok)throw Error('Audio unavailable');const data=await response.arrayBuffer(),buffer=await this.context.decodeAudioData(data);this.buffers.set(name,buffer);return buffer;})();
+  const task=(async()=>{const response=await fetch('assets/audio/'+name+(name==='inspector-call'?'.mp4':'.wav'));if(!response.ok)throw Error('Audio unavailable');const data=await response.arrayBuffer(),buffer=await this.context.decodeAudioData(data);this.buffers.set(name,buffer);return buffer;})();
   this.loading.set(name,task);
   try{return await task;}catch(error){this.loading.delete(name);this.failed=true;throw error;}
  },
