@@ -3,3 +3,5 @@
 @media(max-width:750px){#tutorial-guide{padding:12px;width:min(310px,calc(100vw - 24px))}#tutorial-guide h2{font-size:15px}#tutorial-guide p{font-size:13px;line-height:1.55}.in-tutorial .tutorial-highlight{outline-width:2px!important;outline-offset:1px!important}}
 
 .tutorial-review{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.tutorial-review button{display:flex;align-items:center;gap:6px;padding:6px;font-size:12px;min-height:44px}.tutorial-review img{width:28px;height:28px;object-fit:contain}
+
+#tutorial-guide [data-tutorial-continue]{background:#126b5e;color:#fff;border:1px solid #0c584d;font-weight:800}#tutorial-guide [data-tutorial-continue]:hover{background:#0c584d}#tutorial-guide [data-tutorial-continue]:focus-visible{outline:3px solid #b27d16;outline-offset:3px}
