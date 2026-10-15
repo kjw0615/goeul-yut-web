@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node dev.cjs",
     "build": "node build.cjs",
-    "test": "node validate.cjs && node audio.test.cjs && node motion.test.cjs && node power.test.cjs && node victory.test.cjs && node shared-event.test.cjs && node chat-scroll.test.cjs && node feedback.test.cjs"
+    "test": "node tutorial.test.cjs && node validate.cjs && node audio.test.cjs && node motion.test.cjs && node power.test.cjs && node victory.test.cjs && node shared-event.test.cjs && node chat-scroll.test.cjs && node feedback.test.cjs"
   },
   "engines": {
     "node": "22.x"
