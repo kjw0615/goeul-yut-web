@@ -1,0 +1,53 @@
+/* Fit the waiting room to the viewport; only message history scrolls. */
+.room-form select{width:100%;min-height:38px;padding:7px 10px;border:1px solid #bfd9d0;border-radius:9px;background:white;color:var(--ink)}
+.victory-options{margin:0;border:1px solid #bfd9d0;border-radius:10px;padding:9px;display:grid;gap:7px;min-width:0}.victory-options legend{font-size:12px;font-weight:700}.room-form .victory-options label{display:flex;flex-direction:row;align-items:center;gap:7px;font-size:11px}.room-form .victory-options input{width:16px;min-height:16px;height:16px;margin:0;accent-color:var(--teal)}.victory-options small{font-size:10px;line-height:1.4;color:var(--muted)}
+.waiting-rules{display:block;font-size:11px;line-height:1.5;color:#526f65;overflow-wrap:anywhere}
+.waiting-tabs{display:none}
+body.in-waiting{height:100dvh;overflow:hidden}
+.in-waiting .topbar{height:48px;padding:0 16px}
+.in-waiting .brand small,.in-waiting .edition{display:none!important}
+.in-waiting main{height:calc(100dvh - 48px);max-width:1440px;padding:12px 18px;margin:auto;overflow:hidden;display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);grid-template-rows:auto minmax(140px,1fr) auto minmax(95px,.65fr) auto;gap:10px 18px}
+.in-waiting .lobby-heading{grid-column:1/-1;grid-row:1;margin:0;min-width:0}
+.in-waiting .lobby-heading h1{font-size:22px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.in-waiting .lobby-heading p{font-size:12px;margin:2px 0}
+.in-waiting .slots{grid-column:1;grid-row:2;min-height:0;gap:8px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.in-waiting .slot{min-height:0;min-width:0;padding:8px;display:flex;flex-direction:column;align-items:stretch;gap:4px;overflow:hidden}
+.in-waiting .slot img{height:0;min-height:22px;flex:1;object-fit:contain}
+.in-waiting .slot h3{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;flex-shrink:0}
+.in-waiting .slot .team-label{font-size:10px;flex-shrink:0}
+.in-waiting .slot .ready-status{margin:0;font-size:10px}
+.in-waiting .slot select,.in-waiting .slot button{min-height:32px;padding:4px;font-size:12px;margin:0;flex-shrink:0;width:100%}
+.in-waiting .slot p{font-size:11px;line-height:1.4;margin:0;text-align:center;flex-shrink:0}
+.in-waiting .empty-slot h3{font-size:13px;margin:0}
+.in-waiting .empty-slot{justify-content:center}
+.in-waiting .section-title{grid-column:1;grid-row:3;margin:0;gap:6px}
+.in-waiting .section-title h2{font-size:15px}.in-waiting .section-title span{font-size:10px}
+.in-waiting .char-grid{grid-column:1;grid-row:4;min-height:0;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:5px}
+.in-waiting .char-choice{min-height:0;min-width:0;padding:2px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.in-waiting .char-choice img{height:0;min-height:0;flex:1;width:100%;object-fit:contain}
+.in-waiting .char-choice span{font-size:10px;line-height:1.2;flex-shrink:0}
+.in-waiting .social-layout{grid-column:2;grid-row:2/5;display:flex;min-height:0;min-width:0;margin:0}
+.in-waiting .chat-panel{width:100%;min-height:0;padding:14px;display:flex;flex-direction:column}
+.in-waiting .panel-head{flex-shrink:0;margin-bottom:8px}.in-waiting .panel-head h2{font-size:17px}
+.in-waiting .chat-messages{height:auto;min-height:0;flex:1}
+.in-waiting .chat-form{flex-shrink:0}.in-waiting .chat-form button{padding:6px 10px}.in-waiting .chat-form input{width:0}
+.in-waiting .ready-row{grid-column:1/-1;grid-row:5;margin:0;padding:9px 12px;gap:10px;flex-direction:row;align-items:center}
+.in-waiting .ready-row button{flex-shrink:0;min-height:44px;padding:9px 16px}.in-waiting .ready-row p{margin:0;line-height:1.4;font-size:11px}
+.in-waiting #connection-note{position:fixed;bottom:4px;left:50%;transform:translateX(-50%);z-index:90;background:#fff4df;margin:0;font-size:12px}.in-waiting #connection-note:empty{display:none}
+@media(max-width:750px){
+ .in-waiting .topbar{padding:0 10px}.in-waiting .brand{font-size:18px}.in-waiting .seal{width:30px;height:30px;font-size:23px}
+ .in-waiting main{padding:8px;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 42px minmax(0,1fr) auto;gap:8px}
+ .in-waiting .lobby-heading h1{font-size:18px}.in-waiting .lobby-heading .eyebrow{display:none}.in-waiting .lobby-heading p{font-size:10px}
+ .in-waiting .waiting-tabs{grid-column:1;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+ .waiting-tabs button{border-radius:9px;background:#dfece7;color:#416e65;font-weight:700}.waiting-tabs button[aria-pressed=true]{background:#237e70;color:white}
+ .in-waiting .slots,.in-waiting .char-grid,.in-waiting .social-layout{grid-column:1;grid-row:3}
+ .in-waiting .slots{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}
+ .in-waiting .slot{padding:8px}.in-waiting .slot select,.in-waiting .slot button{min-height:36px}
+ .in-waiting .char-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
+ .in-waiting .char-choice span{font-size:12px}.in-waiting .section-title{display:none}
+ .in-waiting .ready-row{grid-column:1;grid-row:4;display:grid;grid-template-columns:1fr 1fr;padding:8px;gap:6px}.in-waiting .ready-row p{grid-column:1/-1;grid-row:1;font-size:10px;text-align:center}.in-waiting .ready-row>span{font-size:11px;text-align:center}
+ .in-waiting .chat-form input{font-size:16px}
+ .in-waiting[data-waiting-view=players] .char-grid,.in-waiting[data-waiting-view=players] .social-layout,.in-waiting[data-waiting-view=characters] .slots,.in-waiting[data-waiting-view=characters] .social-layout,.in-waiting[data-waiting-view=chat] .slots,.in-waiting[data-waiting-view=chat] .char-grid{display:none}
+}
+@media(max-height:500px) and (min-width:751px){.in-waiting main{gap:5px 12px;padding:6px 12px;grid-template-rows:auto minmax(130px,1fr) auto minmax(65px,.5fr) auto}.in-waiting .slot{gap:2px;padding:4px}.in-waiting .slot img{display:none}.in-waiting .ready-row{padding:4px 10px}.in-waiting .lobby-heading p,.in-waiting .lobby-heading .eyebrow{display:none}}
+@media(max-width:750px) and (max-height:740px){.in-waiting .slot{gap:2px}.in-waiting .slot img{position:absolute;top:7px;left:5px;width:44px;height:60px;min-height:0}.in-waiting .slot .team-label,.in-waiting .slot h3,.in-waiting .slot .ready-status{padding-left:46px;min-height:14px;text-align:center}.in-waiting .slot select,.in-waiting .slot button{min-height:32px;font-size:11px}.in-waiting .slot:not(.empty-slot)>p{display:none}.in-waiting .empty-slot h3{padding:0}.in-waiting .waiting-rules{font-size:10px}.in-waiting .ready-row button{padding:6px;min-height:40px}}
