@@ -127,6 +127,7 @@ app.addEventListener('click',e=>{const button=e.target.closest('button[data-wait
 // Tutorial uses the production renderers and actions; only its transport is local.
 window.TUTORIAL_VIEW={
  begin(){this.savedBet=bet;bet=20;this.savedDraft=roomDraft;this.savedLobbyView=lobbyView;this.savedWaitingView=waitingView;roomDraft=null;lobbyView='rooms';waitingView='players';clearRun();game=null;selected=null;infoView=null;renderLobby();},
+ showCreate(){lobbyView='create';},
  apply:applyNetState,
  finish(){clearRun();game=null;selected=null;infoView=null;resultClosed=null;saleSelection.clear();roomDraft=this.savedDraft;bet=this.savedBet;lobbyView=this.savedLobbyView;waitingView=this.savedWaitingView;SOCIAL.clearChat();SOUND.observe(null,null);FEEDBACK.observe(null,null);SPECIAL_FX.observe(null,null);app.replaceChildren();renderLobby();}
 };
