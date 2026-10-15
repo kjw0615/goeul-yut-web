@@ -1,6 +1,6 @@
 /* Fit the waiting room to the viewport; only message history scrolls. */
 .room-card-rules{margin-top:6px;min-width:0}.room-rule-stats{display:flex;flex-wrap:wrap;gap:5px}.room-rule-stats span{background:#e2eee8;color:#315e51;border-radius:5px;padding:3px 6px;font-size:11px;font-weight:700;line-height:1.2}.room-card-rules p{font-size:11px;line-height:1.5;margin:5px 0 0;color:#516d63;overflow-wrap:anywhere}.room-card-rules p b{color:#264c40;margin-right:4px}.room-card-rules p span{white-space:nowrap}
-.in-lobby .lobby-columns{flex:2.7}.in-lobby .social-layout{flex:.7}.in-lobby .room-list{grid-auto-rows:minmax(174px,calc((100% - 20px)/2))}.in-lobby .room-card{gap:6px}
+.in-lobby .lobby-columns{flex:1.2}.in-lobby .social-layout{flex:1;min-height:180px}.in-lobby .room-list{grid-auto-rows:190px}.in-lobby .room-card{gap:6px}
 @media(max-width:750px){.in-lobby .room-list{grid-auto-rows:172px}.in-lobby .lobby-columns,.in-lobby .social-layout{flex:1}}
 .room-form select{width:100%;min-height:38px;padding:7px 10px;border:1px solid #bfd9d0;border-radius:9px;background:white;color:var(--ink)}
 .victory-options{margin:0;border:1px solid #bfd9d0;border-radius:10px;padding:9px;display:grid;gap:7px;min-width:0}.victory-options legend{font-size:12px;font-weight:700}.room-form .victory-options label{display:flex;flex-direction:row;align-items:center;gap:7px;font-size:11px}.room-form .victory-options input{width:16px;min-height:16px;height:16px;margin:0;accent-color:var(--teal)}.victory-options small{font-size:10px;line-height:1.4;color:var(--muted)}
@@ -54,3 +54,16 @@ body.in-waiting{height:100dvh;overflow:hidden}
 }
 @media(max-height:500px) and (min-width:751px){.in-waiting main{gap:5px 12px;padding:6px 12px;grid-template-rows:auto minmax(130px,1fr) auto minmax(65px,.5fr) auto}.in-waiting .slot{gap:2px;padding:4px}.in-waiting .slot img{display:none}.in-waiting .ready-row{padding:4px 10px}.in-waiting .lobby-heading p,.in-waiting .lobby-heading .eyebrow{display:none}}
 @media(max-width:750px) and (max-height:740px){.in-waiting .slot{gap:2px}.in-waiting .slot img{position:absolute;top:7px;left:5px;width:44px;height:60px;min-height:0}.in-waiting .slot .team-label,.in-waiting .slot h3,.in-waiting .slot .ready-status{padding-left:46px;min-height:14px;text-align:center}.in-waiting .slot select,.in-waiting .slot button{min-height:32px;font-size:11px}.in-waiting .slot:not(.empty-slot)>p{display:none}.in-waiting .empty-slot h3{padding:0}.in-waiting .waiting-rules{font-size:10px}.in-waiting .ready-row button{padding:6px;min-height:40px}}
+
+/* Desktop lobby: chat stays beside the rooms rather than below the creation form. */
+@media(min-width:1101px){
+ .in-lobby main{display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,27vw,360px);grid-template-rows:auto auto minmax(0,1fr);gap:12px 18px}
+ .in-lobby .lobby-heading{grid-column:1/-1;grid-row:1}.in-lobby .lobby-tools{grid-column:1/-1;grid-row:2}
+ .in-lobby .lobby-columns{grid-column:1;grid-row:3;grid-template-columns:220px minmax(0,1fr);gap:14px;height:100%;min-height:0}
+ .in-lobby .social-layout{grid-column:2;grid-row:3;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,2fr) minmax(110px,.7fr);gap:12px;height:100%;min-height:0}
+ .in-lobby .room-list{grid-auto-rows:190px;align-content:start}
+ .in-lobby .chat-panel{min-height:0}.in-lobby .chat-form{gap:5px}.in-lobby .chat-form input{width:0;padding:8px;font-size:13px}.in-lobby .chat-form>.primary{padding:7px 10px}.in-lobby .chat-message{display:block}.in-lobby .chat-message b{display:block;font-size:10px}.in-lobby .chat-message span{font-size:12px}
+ .in-lobby #connection-note:not(:empty){position:fixed;bottom:8px;left:50%;transform:translateX(-50%);z-index:90;background:#fff4df;padding:6px 12px;border-radius:8px}
+}
+@media(min-width:751px) and (max-width:1100px){.in-lobby .lobby-columns{flex:1.15}.in-lobby .social-layout{flex:1;min-height:190px}.in-lobby .room-list{grid-auto-rows:174px}}
+@media(max-width:750px){.in-lobby .social-layout{min-height:0}}
