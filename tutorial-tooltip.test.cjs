@@ -4,7 +4,8 @@ const vm=require('node:vm');
 let target=null,blocked=false;
 const queried=[];
 const document={addEventListener(){},documentElement:{clientWidth:1280},querySelector(selector){queried.push(selector);if(selector.startsWith('#throw-reveal'))return blocked?{}:null;return selector==='#next-action'?target:null;}};
-const context={window:{innerHeight:720},document,getComputedStyle:el=>({visibility:el.visible?'visible':'hidden'})};
+const net={background:false,fastSync:true};
+const context={NET:net,window:{innerHeight:720},document,getComputedStyle:el=>({visibility:el.visible?'visible':'hidden'})};
 vm.runInNewContext(fs.readFileSync('public/tutorial.js','utf8'),context);
 const tutorial=context.window.TUTORIAL;
 tutorial.guide={hidden:false,offsetWidth:310,offsetHeight:160,style:{setProperty(){}},dataset:{}};
@@ -21,6 +22,20 @@ target=button();tutorial.position();assert.equal(tutorial.target,target);assert.
 blocked=true;tutorial.position();assert.equal(tutorial.guide.hidden,true);assert.equal(tutorial.target,null);
 blocked=false;target.visible=false;tutorial.position();assert.equal(tutorial.guide.hidden,true);
 console.log('PASS 다음 버튼 생성·활성화까지 안내 숨김·캐릭터 카드 대체 부착 없음·화면 재생성 후 대상 재연결');
+// Tutorial focus changes pause animations without enabling network catch-up mode.
+const animations=[{playState:'running',pause(){this.paused=true;},play(){this.resumed=true;}}];
+document.getAnimations=()=>animations;tutorial.pausedAnimations=new Set();
+tutorial.visibilityChanged(true);assert.equal(net.fastSync,false);assert(animations[0].paused);
+tutorial.visibilityChanged(false);assert.equal(net.background,false);assert.equal(net.fastSync,false);assert(animations[0].resumed);
+// A tutorial focus event must not clear animation generations or force-finish them.
+const appSource=fs.readFileSync('public/app.js','utf8');
+const visibilityContext={window:{TUTORIAL:tutorial},TUTORIAL:tutorial,NET:net};tutorial.active=true;
+vm.createContext(visibilityContext);vm.runInContext(appSource.slice(appSource.indexOf('function synchronizeVisibility('),appSource.indexOf("document.addEventListener('visibilitychange'")),visibilityContext);
+net.fastSync=true;visibilityContext.synchronizeVisibility(true);visibilityContext.synchronizeVisibility(false);assert.equal(net.fastSync,false);
+let tutorialExitOpened=0;tutorial.exitDialog={showModal(){tutorialExitOpened++;}};
+tutorial.askExit();assert.equal(tutorialExitOpened,1);assert(!queried.includes('#leave-description'));
+tutorial.scenario={complete:true};tutorial.selector=originalSelector;assert.equal(tutorial.selector(),'.tutorial-completion-anchor');tutorial.scenario=null;
+console.log('PASS 튜토리얼 복귀 후 연출 생략 상태 해제·종료 전용 대화상자·완료 설명은 이모티콘과 분리');
 // Pause only for a meaningful AI event, and let the user finish reading it.
 (async()=>{
  const t=context.window.TUTORIAL;t.selector=originalSelector;
